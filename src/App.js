@@ -14,7 +14,6 @@ import 'react-toastify/dist/ReactToastify.css';
 import Updating from "./component/Updating";
 
 function App() {
-
   return (
     <AuthProvider>
       <Router>

@@ -11,12 +11,10 @@ import 'react-circular-progressbar/dist/styles.css';
 import { IoIosSunny,IoIosMedical, IoMdImages, IoMdRose } from "react-icons/io";
 import thelogo from "./assets/finger-icon.png";
 
-
+// styled-components
 const Wrap = styled.div`
   width:100vw;    
   min-height:100vh;
-
-
 `;
 
 const Mobile = styled.div`
@@ -44,12 +42,12 @@ const MobileComp = styled.div`
 const WeekWrap = styled.div`
   padding:20px;
   padding-top:0px;
-  display:grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
   cursor: default;
   background:white;
   min-height:60vh;
   border-radius:5px;
+  display:grid;
+  grid-template-columns: repeat(7, 1fr);
 `;
 
 const WeekWrapColor = styled.div`
@@ -63,10 +61,7 @@ const DayWrap = styled.div`
 `;
 
 const TitleWrap = styled.div`
-  padding-right:0px;
-  padding-bottom:0;
-  padding-left:30px;
-  padding-top:30px;
+  padding: 30px 0px 0px 30px;
   color:#32a851;
 
   width: calc(100% - 230px);
@@ -82,13 +77,7 @@ const TitleBox = styled.div`
 
 const GlobalStyles = createGlobalStyle`
   @import url('href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap');
-`
-
-// const NoteTextarea = styled.textarea`
-//   font-family: 'Montserrat', sans-serif;
-//   font-size:13px;
-//   font-weight:300;
-// `;
+`;
 
 const MonthTitle = styled.div`
     margin-top:40px;
@@ -97,6 +86,7 @@ const MonthTitle = styled.div`
 `;
 
 function Main({history}) {
+  // Default View = Weekly View
     const [uid, setUid] = useState();
     const [theData, setTheData] = useState([]);
     const [noteData, setNoteData] = useState("");
@@ -131,19 +121,17 @@ function Main({history}) {
 
       // Calculate This Week
       let DayArray = [];
-      // let doday = new Date();
+
       for(let i = 0; i < 7; i++){        
         today.setDate(today.getDate() + i - today.getDay());
         let datecode = today.getFullYear() + "" + month + "" + today.getDate();
         DayArray.push({id: datecode, day: getDayName(today), theDate: today.getDate()  });        
       }
-      // console.log("DAY", DayArray);
       setWeekData(DayArray);
 
       let info;
       //Assign UID
       firebase.auth().onAuthStateChanged(user => {
-
         if(user) {
           setUid(user.uid);
           // CREATE WEEKLY DB BASED on TEMPLATE
@@ -192,14 +180,13 @@ function Main({history}) {
         }
       }); 
       return () => info();
-
-    }, []); // [] 이게 있으면, 실행을 한번만 한다
+    }, []);
     
 
     
     const getDayName = (today) => {
-      var days = ['sunday', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday'];
-      var dayName = days[today.getDay()];      
+      let days = ['sunday', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday'];
+      let dayName = days[today.getDay()];      
       return dayName;
     }
 
@@ -243,7 +230,6 @@ function Main({history}) {
         let theTotal = templateTotal + extraTotal;
         let theCurrent = templateCurrent + extraCurrent;
         let finalPercent = Math.floor(theCurrent / theTotal * 100);
-        console.log("PEREPPER", finalPercent);        
         setPercent(finalPercent);
       }
 
@@ -251,12 +237,11 @@ function Main({history}) {
 
 
     const saveNote = () => {
-      console.log("note saved");
       let meme = {[mcode] : {note: noteData}};
       db.collection("izgym").doc(uid).set({ ...theData, note: {...theData['note'], ...meme} });
     }
 
-    const onAddTask = (e) => {
+    const onAddTask = e => {
         e.preventDefault();
 
         if(theData['extra'][gcode] !== undefined){
@@ -268,7 +253,6 @@ function Main({history}) {
           momo.push({name: addTask.value, current:0, total:10 });
           theData['extra'][gcode] = momo;
         }
-        // console.log("MOMO", theData);
 
         db.collection("izgym").doc(uid).set({ ...theData, extra: { ...theData['extra'] }  });
         assignPercent(gcode, theData);
@@ -298,10 +282,6 @@ function Main({history}) {
               </MobileComp>
             </Mobile>
           <Header current={0} />
-{/* 
-          <TitleWrap>
-            <TitleBox>{currentYear} {monthNames[currentMonth]}</TitleBox>
-          </TitleWrap> */}
 
           <WeekWrapColor>
           <WeekWrap>

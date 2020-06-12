@@ -19,17 +19,17 @@ const Mobile = styled.div`
     @media only screen and (min-width: 769px) {
         display:none;
     }
-  @media only screen and (max-width: 768px) {
-    background: white;
-    width:100%;
-    height:100%;
-    z-index:9999;
-    position:fixed;
-    left: 0; top:0;
-    display:grid;
-    justify-content:center;
-    align-items:center;
-  }
+    @media only screen and (max-width: 768px) {
+        background: white;
+        width:100%;
+        height:100%;
+        z-index:9999;
+        position:fixed;
+        left: 0; top:0;
+        display:grid;
+        justify-content:center;
+        align-items:center;
+    }
 `;
 
 const MobileComp = styled.div`
@@ -69,8 +69,7 @@ const H4 = styled.h4`
 const LoginButton = styled.button`
     width:calc(100% - 5px);    
     border:none;
-    margin-top:10px;
-    margin-bottom:10px;
+    margin: 10px 0;
     padding:5px;
     color:white;
     background:rgba(52, 64, 108, 0.5);

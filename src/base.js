@@ -1,10 +1,9 @@
-// import Rebase from 're-base';
 import firebase from "firebase";
 
 const config = {
-    apiKey: "AIzaSyAv-TOnRygJdXE3UXXTVtBWr9_YwpdA8G4",
-    authDomain: "izgym-c8569.firebaseapp.com",
-    databaseURL: "https://izgym-c8569.firebaseio.com",
+    apiKey: process.env.REACT_APP_API_KEY,
+    authDomain: process.env.REACT_APP_AUTH_DOMAIN,
+    databaseURL: process.env.REACT_APP_DATABASE_URL,
     projectId: "izgym-c8569",
     storageBucket: "izgym-c8569.appspot.com",
     messagingSenderId: "914604649889",
@@ -13,6 +12,4 @@ const config = {
 }
 
 firebase.initializeApp(config);
-// const base = Rebase.createClass(app.database());
 export default firebase;
-// export {base};
