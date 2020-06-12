@@ -61,7 +61,6 @@ const DivDay = styled.div`
   margin-bottom:30px;
 `;
 
-//////////////
 
 const TitleWrap = styled.div`
   padding-top:10px;
@@ -95,7 +94,6 @@ const MonthButton = styled.div`
   font-size:13px;
   display:inline;
 `;
-/////////////////
 
 
 const Month = () => {
@@ -169,10 +167,8 @@ const Month = () => {
       }); 
       return () => info();
 
-
-    }, []); // [] 이게 있으면, 실행을 한번만 한다
+    }, []);
     
-
     const setBeforeAfter = (year, month) =>{
       let firstDay = new Date(year, month, 1); 
       let before = 0 + firstDay.getDay();
@@ -181,7 +177,6 @@ const Month = () => {
       for(let i = 1; i <= before; i++){
         beforeBox.push({name:"hoho"});
       }
-
       setMonthDataBefore(beforeBox);
     }
 
@@ -247,11 +242,10 @@ const Month = () => {
         assignPercent(gcode, theData);
     }
 
-
-
     const mouseEnter = () => {
       setSideVisible(true);
     }
+    
     const mouseLeave = () => {
       setSideVisible(false);
     }

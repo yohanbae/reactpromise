@@ -2,8 +2,6 @@ import React from "react";
 import styled from "styled-components";
 // import Week from './style';
 
-
-
 const Week = styled.div`
     padding:15px 10px;
     border-radius:5px;
@@ -47,7 +45,6 @@ const MonthDayTask = ({ theDay, dayId, theData, theDate }) => {
             extras = theData['extra'][dayId];
         }
     }
-    // console.log("EXTRA", extras);
 
 
     return (

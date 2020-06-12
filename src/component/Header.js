@@ -20,13 +20,12 @@ const HeaderWrap = styled.div`
     z-index:100;
 `;
 
-    const HeaderTitle = styled.div`
+const HeaderTitle = styled.div`
     font-size:14px;
     color:white;
     font-weight:300;
     padding-left:30px;
-
-    `;
+`;
 
 const HeaderMenu = styled.div`
     display:grid; grid-gap:10px;
@@ -69,8 +68,6 @@ const Header = ({current = 0}) => {
     };
 
     
-    
-
     return (
         <HeaderWrap>
             <HeaderTitle>PROMISE</HeaderTitle>

@@ -27,9 +27,9 @@ const Hdate = styled.h1`
 `;
 
 const DayTop = styled.div`
-
-padding-bottom:15px;
+    padding-bottom:15px;
 `;
+
 let count = 0;
 
 const DayTask = ({ theDay, dayId, uid, theData, theDate, assignPercent, updateGogo }) => {
@@ -105,9 +105,6 @@ const DayTask = ({ theDay, dayId, uid, theData, theDate, assignPercent, updateGo
             extras = theData['extra'][dayId];
         }
     }
-
-
-    // console.log("EXTRA", extras);
 
     const updatePercent = () => {
         assignPercent(dayId, theData);

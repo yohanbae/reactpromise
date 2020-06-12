@@ -11,7 +11,8 @@ const Week = styled.div`
 
 const H5 = styled.h5`
     font-size:15px;
-    margin:0; padding:0; margin-bottom:5px;
+    margin:0; padding:0;
+    margin-bottom:5px;
     color:#8490bb;
     font-weight:300;
     text-transform: uppercase;

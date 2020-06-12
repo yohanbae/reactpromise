@@ -86,7 +86,7 @@ const EditTemplate = ({history}) => {
       return () => info();
 
 
-      }, []); // [] 이게 있으면, 실행을 한번만 한다    
+      }, []);
 
       let myArray = [
         {day: "sunday"},
